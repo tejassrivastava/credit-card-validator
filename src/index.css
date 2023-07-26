@@ -1,0 +1,391 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500&display=swap");
+
+:root {
+  --Lineargradient: hsl(249, 99%, 64%) to hsl(278, 94%, 30%);
+  --Red: hsl(0, 100%, 66%);
+
+  --White: hsl(0, 0%, 100%);
+  --Lighgrayishviolet: hsl(270, 3%, 87%);
+  --Dargrayisviolet: hsl(279, 6%, 55%);
+  --Verdarviolet: hsl(278, 68%, 11%);
+}
+
+body {
+  font-family: "Space Grotesk", sans-serif;
+  background: var(--White);
+}
+
+body::after {
+  content: "";
+  background-color: #4158d0;
+  background-image: linear-gradient(
+    43deg,
+    #4158d0 0%,
+    #c850c0 46%,
+    #ffcc70 100%
+  );
+  width: 33.5%;
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -100;
+  transition: width 0.35s ease-in-out, height 0.35s ease-in-out;
+}
+
+.body-slider::after {
+  width: 100%;
+}
+
+#root {
+  display: flex;
+  min-height: 100vh;
+  align-items: center;
+  justify-content: center;
+}
+
+.info--hidden {
+  height: 0 !important;
+}
+
+.input--error {
+  border: 1px solid var(--Red) !important;
+}
+
+.shake {
+  animation: shake 0.8s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+}
+
+@keyframes shake {
+  10%,
+  90% {
+    transform: translate3d(-1px, 0, 0);
+    background: var(--Red);
+  }
+
+  20%,
+  80% {
+    transform: translate3d(2px, 0, 0);
+  }
+
+  30%,
+  50%,
+  70% {
+    transform: translate3d(-4px, 0, 0);
+  }
+
+  40%,
+  60% {
+    transform: translate3d(4px, 0, 0);
+  }
+}
+
+.cardFront,
+.cardBack {
+  max-width: 28em;
+  height: 15.5rem;
+  border-radius: 10px;
+  background-size: cover;
+  color: var(--White);
+  position: relative;
+  padding: 32px;
+}
+
+.cardFront {
+  background-image: url("./assets/bg-card-front.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  margin: 0 auto 32px auto;
+}
+
+.cardFront div {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  word-spacing: 6px;
+}
+
+.cardFront > span {
+  font-size: clamp(22px, 2.5vw, 27px);
+  letter-spacing: 4px;
+  margin-bottom: 25px;
+}
+
+.cardFront div span {
+  font-size: 16px;
+}
+
+.cardFront div span:first-child {
+  text-transform: uppercase;
+}
+
+.cardBack {
+  background-image: url("./assets/bg-card-back.png");
+  background-size: contain;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  margin: 0 6rem 1rem auto;
+}
+
+.cardBack span {
+  position: absolute;
+  right: 56px;
+  top: 105px;
+  font-size: 24px;
+}
+
+.cardFront::after {
+  content: url("./assets/card-logo.svg");
+  position: absolute;
+  top: 27px;
+  left: 27px;
+}
+
+.cardDeco {
+  width: 54%;
+  padding: 2rem;
+}
+
+.cardOverflow {
+  width: 46%;
+  overflow: hidden;
+}
+
+.cardOverflow > div {
+  transition: transform 0.35s ease-in-out;
+}
+
+.btn-primary {
+  background: var(--Verdarviolet);
+  border: none;
+  padding: 15px 20px;
+  color: var(--White);
+  cursor: pointer;
+  border-radius: 6px;
+  font-size: 18px;
+}
+
+.btn-primary:hover {
+  opacity: 0.9;
+}
+
+.card-input {
+  padding: 13px;
+  border-radius: 0.6rem;
+}
+
+.card-input::placeholder {
+  opacity: 0.7;
+}
+
+.cardForm {
+  display: flex;
+  flex-direction: column;
+  max-width: 24rem;
+  margin-left: 10%;
+  pad: 1rem;
+}
+
+.cardForm label {
+  margin-bottom: 16px;
+  gap: 14px;
+  text-transform: uppercase;
+  display: flex;
+  flex-direction: column;
+  color: var(--Verdarviolet);
+  font-size: 15px;
+}
+
+/* .cardForm input:hover {
+  border: 1px solid hsl(249, 99%, 64%);
+} */
+
+.labelmm {
+  width: 50%;
+}
+
+.labelcvc {
+  width: 50%;
+}
+
+.labelmm div {
+  display: flex;
+  gap: 10px;
+}
+
+.labelmm input {
+  width: 100%;
+}
+
+.cvc-mmyy {
+  display: flex;
+  margin-bottom: 26px;
+  position: relative;
+  gap: 10px;
+}
+
+.cvc-mmyy .info {
+  position: absolute;
+  bottom: -40px;
+  transform: translateY(-25px);
+}
+
+.cvc-mmyy .info:last-child {
+  right: 1rem;
+}
+
+.info {
+  transition: height 0.3s ease-in-out;
+  font-size: 13px;
+  margin-top: 4px;
+  margin-bottom: 15px;
+  overflow: hidden;
+  height: 20px;
+  color: var(--Red);
+  transform: translateY(-10px);
+  margin: 0;
+}
+
+.cardThanks {
+  text-align: center;
+  color: var(--Verdarviolet);
+  max-width: 40rem;
+  margin-right: auto;
+}
+
+.cardThanks p:first-of-type {
+  font-size: 28px;
+  text-transform: uppercase;
+  margin-bottom: 0;
+}
+
+.cardThanks p:last-of-type {
+  opacity: 0.6;
+  font: 16px;
+  margin-top: 10px;
+  margin-bottom: 30px;
+}
+
+.cardThanks .btn-primary {
+  width: 60%;
+}
+
+/* Responsive */
+
+@media screen and (max-width: 1350px) {
+  .cardFront,
+  .cardBack {
+    transform: scale(0.85);
+  }
+
+  .cardForm {
+    margin-left: 3.5rem;
+    padding: 0;
+  }
+}
+
+@media screen and (max-width: 1010px) {
+  .cardBack {
+    margin: 0 auto;
+  }
+}
+
+@media screen and (max-width: 750px) {
+  #root {
+    flex-direction: column;
+  }
+
+  body::after {
+    background-color: #4158d0;
+    background-image: linear-gradient(
+      43deg,
+      #4158d0 0%,
+      #c850c0 46%,
+      #ffcc70 100%
+    );
+    height: 40%;
+    width: 100%;
+  }
+
+  .body-slider::after {
+    height: 100%;
+  }
+
+  .cardFront {
+    margin: 1rem 2rem 1rem auto;
+    position: absolute;
+    width: inherit;
+    z-index: 10;
+    top: 8rem !important;
+    left: 3rem;
+  }
+
+  .cardBack {
+    position: absolute;
+    top: 2rem;
+    right: 3rem;
+    width: inherit;
+  }
+
+  .cardFront,
+  .cardBack {
+    transform: scale(0.76) !important;
+  }
+
+  .cardDeco {
+    width: 100%;
+  }
+
+  .cardForm {
+    padding: 2rem;
+    margin-left: auto;
+    margin-top: 20rem;
+    max-width: 100%;
+  }
+
+  .cardForm,
+  .cardThanks {
+    width: 100%;
+  }
+
+  .cardOverflow {
+    width: 100%;
+  }
+
+  .App::before {
+    content: "";
+    height: 22rem;
+  }
+
+  .cardThanks {
+    margin: auto;
+    margin-top: 19rem;
+  }
+}
+
+@media screen and (max-width: 585px) {
+  .App::before {
+    height: 20rem !important;
+  }
+
+  .cardFront {
+    left: 0 !important;
+  }
+
+  .cardBack {
+    right: 0 !important;
+  }
+
+  .cardForm {
+    margin-top: 19rem !important;
+  }
+}
+
+/* Tailwind */
