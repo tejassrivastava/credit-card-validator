@@ -70,6 +70,7 @@ export default function CardForm() {
     }
     if (name === "cardExpiry") {
       clearErrors("cardExpiry");
+      
       if (value.length === 2) {
         e.target.value = value + "/";
       }
@@ -133,7 +134,7 @@ export default function CardForm() {
       });
     } else if (
       expirationYear === currentYear &&
-      expirationMonth <= currentMonth
+      expirationMonth < currentMonth
     ) {
       setError("cardExpiry", {
         type: "mmlcm",
@@ -268,12 +269,14 @@ export default function CardForm() {
             placeholder="MM/YY"
             className=" rounded-md peer pl-12 pr-2 py-2 border-2 border-gray-200 placeholder-gray-300         border-gray-300/30 outline-none border-2 border-solid focus:border-blue-400"
             maxLength={5}
+            onKeyDown={(e) => { if (e.key === 'Backspace') { e.target.value = "" }}}
             {...register("cardExpiry", {
               required: {
                 value: true,
                 message: "Card Expiry Is Required",
               },
               maxLength: 5,
+              
               onChange: (e) => handleInput(e),
             })}
           />
